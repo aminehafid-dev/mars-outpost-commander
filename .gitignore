@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Credentials, keys, and local configuration
+nasa_api_key.txt
+*.key
+.env
+*.env
+credentials.json
+config/
+*.local
+
