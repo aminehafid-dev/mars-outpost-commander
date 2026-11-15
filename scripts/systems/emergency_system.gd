@@ -39,7 +39,7 @@ const EMERGENCIES: Array[Dictionary] = [
 		"id": "solar_storm",
 		"type": "Solar Storm",
 		"title": "RADIATION ALERT: Coronal Mass Ejection",
-		"description": "A Class-X solar flare has reached Jezero Crater. Dangerous ionized radiation is sweeping across the Martian surface.",
+		"description": "Coronagraph observations record an energetic coronal mass ejection propagating through the inner solar system. While modeled heliospheric shock propagation poses potential radiation risks, actual surface exposure depends on particle energy spectrum, atmospheric column depth, and habitat shielding geometry (simulated emergency triage scenario).",
 		"warning_color": Color(0.9, 0.3, 1.0),
 		"choices": [
 			{
@@ -50,11 +50,11 @@ const EMERGENCIES: Array[Dictionary] = [
 				"result_text": "Crew spent 18 hours sheltered in the vault. Minimal radiation exposure (-6 Rad, -8 Food, -8 Energy)."
 			},
 			{
-				"title": "Overcharge Magnetic Deflectors",
-				"description": "Route maximum wattage into the outpost's active electromagnetic deflector shields.",
+				"title": "Overcharge Magnetic Deflectors [Fictional Abstraction]",
+				"description": "Route maximum wattage into active electromagnetic deflector coils (fictional gameplay abstraction; active magnetic shielding is theoretical and not established Mars technology).",
 				"cost": { "energy": 24.0 },
 				"impact": { "radiation": 0.0 },
-				"result_text": "Deflector coils absorbed the coronal burst completely (-24 Energy, 0 Rad loss)."
+				"result_text": "Deflector coils absorbed the burst (-24 Energy, 0 Rad loss; fictional gameplay abstraction)."
 			},
 			{
 				"title": "Maintain Surface Operations",
@@ -131,9 +131,9 @@ static func roll_emergency(sol: int, last_emergency_sol: int = -1, space_weather
 			enriched["title"] = "RADIATION ALERT: NASA CCMC Telemetry [%s]" % act_id
 			if has_impact:
 				var classification: String = space_weather_data.get("trajectory_classification", "Modeled Strike")
-				enriched["description"] = "NASA Moon to Mars Space Weather Office preliminary models project a Mars solar wind shock arrival (%s) at %d km/s (Type %s, %s). Modeled energetic particles are interacting with the upper exosphere (simulated triage response; not direct in-situ surface dose)." % [arrival, int(speed), cme_type, classification]
+				enriched["description"] = "NASA Moon to Mars Space Weather Office models project a Mars solar wind shock arrival (%s) at %d km/s (Type %s, %s). Modeled shock propagation represents potential radiation risks, though actual surface exposure depends on particle energy, atmospheric shielding, and habitat protection (simulated triage response; model predictions do not measure in-situ particle flux or surface dose)." % [arrival, int(speed), cme_type, classification]
 			else:
-				enriched["description"] = "NASA CCMC heliospheric sensors detect CME event %s propagating at %d km/s (Type %s; off-axis trajectory). Background solar energetic particles detected (simulated triage response)." % [act_id, int(speed), cme_type]
+				enriched["description"] = "NASA CCMC space-weather observations record CME event %s propagating at %d km/s (Type %s; off-axis trajectory). Modeled shock trajectory bypasses Mars; baseline operational precautions observed (simulated triage response)." % [act_id, int(speed), cme_type]
 		return enriched
 	
 	return base_emergency

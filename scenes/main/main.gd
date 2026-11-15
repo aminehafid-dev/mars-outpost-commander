@@ -186,7 +186,7 @@ func _build_ui() -> void:
 	food_bar = food_widgets["bar"]
 	food_label = food_widgets["label"]
 	
-	var rad_widgets := _create_resource_widget("Radiation Shielding", Color(0.85, 0.35, 1.0), "Regolith & Deflectors")
+	var rad_widgets := _create_resource_widget("Radiation Shielding", Color(0.85, 0.35, 1.0), "Regolith & Deflectors (Sci-Fi)")
 	res_vbox.add_child(rad_widgets["container"])
 	radiation_bar = rad_widgets["bar"]
 	radiation_label = rad_widgets["label"]
@@ -886,7 +886,7 @@ func _build_weather_panel(parent: VBoxContainer) -> void:
 	vbox.add_child(weather_time_label)
 	
 	var attr_label := Label.new()
-	attr_label.text = "Source: NASA CCMC DONKI / M2M Office\nDisclaimer: DONKI model products are preliminary research data; not direct surface radiation measurements."
+	attr_label.text = "Source: NASA CCMC DONKI / M2M Office\nDisclaimer: DONKI CME observations and WSA-ENLIL simulations model solar wind propagation; they do not measure in-situ SEP flux or surface radiation dose at Mars."
 	attr_label.add_theme_font_size_override("font_size", 9)
 	attr_label.add_theme_color_override("font_color", Color(0.45, 0.55, 0.65))
 	attr_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

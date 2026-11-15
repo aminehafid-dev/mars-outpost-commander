@@ -132,7 +132,17 @@ Solar Particle Events (SPEs)—triggered by solar flares and coronal mass ejecti
 3. **Event Duration & Profile:** SPE enhancements typically persist over hours to several days; integrated dose depends on total particle fluence over time.
 4. **Habitat Shielding Geometry:** Bulk passive shielding (such as 3 meters of regolith overburden in a dedicated storm vault) and hydrogenous interior materials provide substantial additional attenuation.
 
-In *Mars Outpost Commander*, solar storms represent operational triage dilemmas where commanders must choose whether to halt surface operations and shelter crew in the regolith vault, rather than a deterministic single lethal dose.
+In *Mars Outpost Commander*, solar storms represent operational triage dilemmas where commanders must choose whether to halt surface operations and shelter crew in the regolith vault, rather than a deterministic single lethal dose. The simulation strictly distinguishes remote space-weather observations, numerical model predictions, and fictional gameplay triage:
+- **Remote Observations & Models vs. In-Situ Particle Measurements:** NASA DONKI coronagraph observations identify CMEs, and WSA-ENLIL simulations model solar wind shock propagation through the inner heliosphere. **Crucially, DONKI CME observations and WSA-ENLIL modeled shock arrivals do not, by themselves, measure or confirm in-situ Solar Energetic Particle (SEP) flux or radiation dose on the Martian surface.** Actual surface exposure depends heavily on incoming particle energy spectrum, atmospheric column depth, and habitat protection geometry. In-situ particle measurements require dedicated surface or orbital instruments (e.g., MSL Curiosity RAD or MAVEN SEP).
+- **Incident Alert Veracity:** Emergency alerts never claim that a Class-X flare has reached Jezero Crater unless confirmed by authentic observational data, reflecting that electromagnetic radiation from flares, energetic protons, and CME plasma travel with distinct propagation speeds and heliospheric trajectories across the 1.52 AU baseline.
+
+#### Magnetic Deflection: Fictional Gameplay Abstraction vs. Established Mars Technology
+> [!WARNING]
+> **Active Magnetic Deflectors Are a Fictional Gameplay Abstraction:**  
+> In *Mars Outpost Commander*, players are presented with options to deploy or overcharge active electromagnetic deflectors to mitigate solar storm radiation.  
+> **This mechanism is strictly a fictional gameplay abstraction, not established Mars radiation-protection technology.**  
+> - **Established Mars Radiation Mitigation:** NASA mission architecture baselines (including NASA-STD-3001, Artemis deep-space habitat studies, and Langley Research Center shielding analyses) rely almost exclusively on **passive mass shielding**: in-situ Martian regolith overburden (such as 3+ meters of sintered basaltic regolith), subsurface lava tube shelters, water storage walls, and hydrogen-rich polymer materials (e.g., polyethylene).  
+> - **Active Magnetic Shielding Status:** Active electromagnetic deflection concepts (such as superconducting magnetic coils or artificial mini-magnetospheres) have been explored theoretically in preliminary conceptual research (e.g., NASA NIAC studies). However, they require immense power infrastructure, cryogenic cooling, and massive structural frameworks, and face severe secondary radiation bremsstrahlung scattering risks. They do **not** represent established or operational Mars surface protection technology.
 
 #### Astronaut Radiation Exposure Standards
 Astronaut permissible radiation exposure limits are governed by institutional standards (such as **NASA-STD-3001, Technical Standard for Human Health, Medical, and Performance, Volume 1**, and recommendations from the National Council on Radiation Protection and Measurements / NCRP).
@@ -181,6 +191,11 @@ NASA's Community Coordinated Modeling Center (CCMC) Space Weather Database of No
 1. **Mars Trajectory vs. Heliospheric Noise:** Many CMEs cataloged by NASA DONKI propagate in directions off-axis from Mars. The game parses WSA-ENLIL impact projections (`impactList`) to explicitly verify whether a modeled shock intersects Mars (`"location": "Mars"`) and provides arrival estimates, rather than falsely treating every solar event as a direct Martian crisis.
 2. **Earth Geomagnetic Data Exclusion:** Earth geomagnetic storm measurements (such as Kp-index or Earth-orbit magnetospheric perturbations) are never presented as Martian surface radiation, because Mars lacks an intrinsic global dipole magnetic field.
 3. **Simulated Triage vs. Scientific Telemetry:** While the incoming CME ID, propagation speed (km/s), and arrival projection are authentic NASA telemetry, the specific outpost emergency damage (-6 Rad Shield, -8 Food, -8 Energy) is a simplified gameplay mechanic representing operational sheltering and emergency deflector load.
+4. **Distinction Between Observations, Model Predictions, and In-Situ Particle Measurements:**  
+   - *Measured Observations:* Remote coronagraph observations cataloged by NASA DONKI (e.g. CME detection time, speed, source morphology).
+   - *Model Predictions:* WSA-ENLIL 3D MHD simulations of solar wind shocks propagating through the heliosphere, calculating estimated shock arrival timestamps at Mars orbit.
+   - *Fictional Gameplay Mechanics:* Normalized resource impacts and commander choices represent balanced gameplay abstractions.
+   - *Scientific Boundary:* DONKI CME observations and WSA-ENLIL modeled shock arrivals do not measure or confirm in-situ Solar Energetic Particle (SEP) flux or surface radiation dose at Mars. The outpost telemetry accurately describes space weather data as modeled heliospheric propagation and potential environmental risks rather than confirmed in-situ particle measurements.
 
 ---
 
@@ -199,6 +214,7 @@ NASA's Community Coordinated Modeling Center (CCMC) Space Weather Database of No
 | **Solar Insolation** | $586.2$ mean | $\text{W/m}^2$ | NASA Mars Fact Sheet | Consumed for actions | $\approx 43\%$ Earth solar flux; dust mitigation requires EVA maintenance. |
 | **Surface Radiation** | $0.64 \pm 0.12$ (dose equiv); $0.210 \pm 0.040$ in Si (absorbed dose) | $\text{mSv/day}$; $\text{mGy/day}$ | Curiosity RAD / Hassler et al. (2014) | $-6\text{ Shield} / \text{Sol}$ | Normalized fictional habitat shielding health; abstracts cumulative biological tissue dose. |
 | **Solar Storm (SPE)** | Variable enhancement modulated by spectrum, duration, & atmosphere | Variable flux | Curiosity RAD (2014) | Alert Event ($-24\text{ Shield}$) | Tactical crisis event requiring crew sheltering based on event intensity and shielding. |
+| **Magnetic Deflection** | Purely theoretical / unproven for surface ops | N/A | Conceptual studies / NIAC | Fictional Abstraction | Active deflectors are a sci-fi gameplay abstraction; passive regolith is the established technology. |
 
 ---
 

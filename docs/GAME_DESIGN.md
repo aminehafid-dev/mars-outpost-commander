@@ -70,12 +70,12 @@ The game centers on four interconnected resource pillars. Neglecting any one of 
 | **Oxygen (O₂)** | MOXIE atmospheric extractors, Algae scrubbers | Crew respiration, module pressure upkeep, hull breaches | **Asphyxiation:** Rapid colonist incapacitation within turns. | 4 crew require $\sim 3.58\text{ kg } O_2/\text{Sol}$ (NASA BVAD: $0.895\text{ kg/CM-d}$). MOXIE demonstrated up to $\sim 12\text{ g/hr}$ on Perseverance; 2–3 kg/hr industrial plants are sized for MAV rocket oxidizer, not crew breathing. |
 | **Energy (Power)** | Photovoltaic arrays, RTG / Kilopower reactors, battery banks | Life support machinery, water pumps, heaters, active shields | **Outpost Freeze:** Blackout disables O₂ generation and heating, causing cascading failures. | Mars surface insolation is $\sim 586.2\text{ W/m}^2$ ($\sim 43\%$ Earth). Atmospheric dust settling ($0.1\%\text{–}0.3\%/\text{Sol}$) requires EVA dust mitigation. |
 | **Food (Rations)** | Hydroponic greenhouses, emergency survival rations | Daily crew consumption, crop spoilage | **Malnutrition:** Colonist efficiency collapses, morale tanks, starvation deaths. | 4 crew require $\sim 3.20\text{ kg dry solids/Sol}$ and $\sim 51.1\text{ MJ/Sol}$ (NASA BVAD: $0.800\text{ kg/CM-d}$, $12.778\text{ MJ/CM-d}$). Hydroponic harvest O2 cost abstracts water treatment & microbial aeration. |
-| **Radiation Protection** | Sintered regolith shielding, electromagnetic deflector coils | Background GCR degradation, deflector power drain, solar flux | **Lethal Exposure:** Crew radiation sickness, incapacitation, mission abort. | Normalized fictional integrity score (0–100). Curiosity RAD measured an average surface GCR dose-equivalent rate of $0.64 \pm 0.12\text{ mSv/day}$ (absorbed dose $\approx 0.21\text{ mGy/day}$ in silicon); SPE radiation enhancements vary widely with event intensity, spectrum, and shielding. |
+| **Radiation Protection** | Sintered regolith shielding, active electromagnetic deflectors *(fictional gameplay abstraction)* | Background GCR degradation, deflector power drain, solar flux | **Lethal Exposure:** Crew radiation sickness, incapacitation, mission abort. | Normalized fictional integrity score (0–100). Note: Active magnetic deflectors are a fictional gameplay abstraction, not established Mars radiation-protection technology. Curiosity RAD measured an average surface GCR dose-equivalent rate of $0.64 \pm 0.12\text{ mSv/day}$ (absorbed dose $\approx 0.21\text{ mGy/day}$ in silicon); SPE radiation enhancements vary widely with event intensity, spectrum, and shielding. |
 
 ### 3.1 Resource Interdependencies
 - **Power powers Life Support:** Without continuous Energy, Oxygen generators halt.
 - **Oxygen & Energy support Food:** Greenhouses consume power and aeration to sustain crops and water recycling loops. (In physical botany, plants produce net O₂; the game abstracts life support loop aeration costs into harvest requirements).
-- **Radiation Protection requires Power or Mass:** Active shields consume wattage; passive regolith shields require robotic construction labor.
+- **Radiation Protection requires Power or Mass:** Active shields consume wattage (fictional gameplay abstraction; active magnetic shielding is theoretical and not established Mars technology); passive regolith shields require robotic construction labor.
 - **Crew enables Maintenance:** Incapacitated crew from radiation or starvation cannot repair oxygen leaks or power substations.
 
 ---
@@ -103,12 +103,12 @@ The base is built upon a modular grid layout on the Martian surface:
 
 Random and conditional emergencies test the player's readiness:
 
-### 5.1 Solar Storm (Solar Particle Event)
-- **Description:** A coronal mass ejection or solar proton event transiently elevates radiation flux across the Martian surface.
-- **Impact:** Particle flux increases above the quiescent GCR background, modulated by event energy spectrum, duration, and atmospheric column depth. External solar arrays experience dust and particle degradation, while unshielded surface crew face acute exposure hazards, making sheltering in the regolith vault an operational priority.
+### 5.1 Solar Storm (Coronal Mass Ejection & Shock Modeling)
+- **Description:** Coronagraph observations catalog a coronal mass ejection, and heliospheric models project solar wind shock propagation toward Martian orbit. While modeled heliospheric shock propagation poses potential radiation risks, actual surface exposure depends on particle energy spectrum, atmospheric column depth, and habitat shielding geometry. (NASA DONKI CME data and WSA-ENLIL simulations provide remote space-weather observations and heliospheric propagation models; they do not measure in-situ particle flux or confirm surface radiation dose).
+- **Impact:** The simulation presents a potential radiation risk triage scenario driving simulated outpost choices. External solar arrays experience dust and particle degradation, making sheltering in the regolith vault an operational priority.
 - **Commander Choices:**
   - *Option A (Safe Triage):* Order all crew into the Regolith Shelter. Outpost productivity drops for 24 hours, but crew remains unharmed.
-  - *Option B (Overcharge Active Shields):* Divert battery power to electromagnetic deflector coils. Crew remains at stations, but electrical grid risks brownout.
+  - *Option B (Overcharge Active Shields - Fictional Abstraction):* Divert battery power to electromagnetic deflector coils (fictional gameplay abstraction; active magnetic shielding is theoretical and not established Mars technology). Crew remains at stations, but electrical grid risks brownout.
   - *Option C (Ride it Out):* Ignore warning to maintain surface tasks. Causes severe radiation damage to unshielded outpost systems and crew.
 
 ### 5.2 Oxygen Leak (Micrometeorite / Seal Failure)
@@ -128,10 +128,15 @@ Random and conditional emergencies test the player's readiness:
   - *Option C (Controlled Rolling Blackouts):* Let non-essential science and heating bays go dark until dust settles (costs heavy energy).
 
 ### 5.4 NASA Space-Weather Telemetry Integration
-- **Real-Time Space Weather Telemetry:** The outpost's telemetry system integrates real-world data from the NASA Community Coordinated Modeling Center (CCMC) DONKI web service and the Moon to Mars (M2M) Space Weather Office.
-- **WSA-ENLIL Mars Trajectory Modeling:** The telemetry dashboard detects whether solar wind simulations project a direct/glancing impact on Mars or general heliospheric activity.
+- **Real-Time Space Weather Telemetry:** The outpost's telemetry system integrates real-world space-weather observations from the NASA Community Coordinated Modeling Center (CCMC) DONKI web service and the Moon to Mars (M2M) Space Weather Office.
+- **WSA-ENLIL Mars Trajectory Modeling:** The telemetry dashboard detects whether solar wind numerical simulations project a direct or glancing shock impact on Mars or off-axis heliospheric propagation.
+- **Clear Distinction of Data Types:** The system explicitly distinguishes three domains:
+  1. *Measured Observations:* Remote coronagraph and solar observations (CME identification, startTime, instruments).
+  2. *Model Predictions:* WSA-ENLIL 3D MHD solar wind simulations (modeled plasma velocity in km/s and estimated Mars shock arrival timestamp).
+  3. *Fictional Gameplay Mechanics:* Normalized resource impacts (-6 Rad Shield, -8 Food, -8 Energy) and tactical emergency decisions.
+  Crucially, DONKI CME observations and WSA-ENLIL shock arrival projections do not confirm measured in-situ Solar Energetic Particle (SEP) flux or surface dose at Mars.
 - **Dynamic Narrative Adaptation:** When a Solar Storm crisis triggers (e.g. Sol 6 or random events), the incident alert dynamically integrates authentic CME telemetry (activity ID, solar wind velocity in km/s, arrival timestamp), creating authentic scientific immersion while preserving gameplay balance.
-- **Scientific Labeling:** Telemetry displays status badges (`[LIVE]`, `[CACHED]`, `[OFFLINE]`) and clear attribution disclaimers, distinguishing authentic solar observations from normalized gameplay damage triage.
+- **Scientific Labeling:** Telemetry displays status badges (`[LIVE]`, `[CACHED]`, `[OFFLINE]`) and clear attribution disclaimers, distinguishing authentic solar observations and models from normalized gameplay damage triage.
 
 ---
 

@@ -231,7 +231,7 @@ func _process_cme_events(events: Array, connection_mode: String) -> Dictionary:
 	
 	target_dict["connection_status"] = connection_mode
 	target_dict["source_attribution"] = "NASA CCMC DONKI / Moon to Mars Space Weather Office"
-	target_dict["scientific_disclaimer"] = "DONKI model products are preliminary research data; not direct Mars surface radiation measurements."
+	target_dict["scientific_disclaimer"] = "DONKI CME observations and WSA-ENLIL simulations model solar wind propagation; they do not measure in-situ SEP flux or surface radiation dose at Mars."
 	
 	return target_dict
 

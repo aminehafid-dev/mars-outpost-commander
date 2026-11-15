@@ -85,7 +85,7 @@ Mars Outpost Commander is designed around three core architectural tenets:
     1. `oxygen` (units)
     2. `energy` (kW / stored kWh)
     3. `food` (rations)
-    4. `radiation_shielding` (effective millisievert protection %)
+    4. `radiation_shielding` (normalized fictional integrity score; active deflectors represent a gameplay abstraction)
   - Computes global production and consumption balances during every simulation tick.
   - Enforces hard boundaries (clamping between `0.0` and `max_capacity`).
   - Alerts `EventBus` when any resource falls below critical warning thresholds or hits zero.
